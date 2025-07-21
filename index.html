@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="../src/output.css" />
+</head>
+<body class="bg-gray-100">
+
+<div class="flex flex-col md:flex-row min-h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-full md:w-64 bg-white shadow-md">
+    <div class="p-6 font-bold text-purple-700 text-2xl">Students</div>
+    <nav class="mt-6 space-y-1">
+      <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-purple-100">Dashboard</a>
+      <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-purple-100">Student List</a>
+      <a href="#" class="block py-3 px-6 text-gray-700 hover:bg-purple-100">Reports</a>
+      <a href="#" class="block py-3 px-6 text-red-600 hover:bg-red-100">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-purple-700">Dashboard</h1>
+    </header>
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-6">
+      <div class="bg-white p-4 rounded-lg shadow text-center">
+        <p class="text-gray-500">Total Students</p>
+        <p id="totalStudents" class="text-2xl font-bold text-purple-700">0</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow text-center">
+        <p class="text-gray-500">Grade A</p>
+        <p id="totalA" class="text-2xl font-bold text-green-600">0</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow text-center">
+        <p class="text-gray-500">Grade B</p>
+        <p id="totalB" class="text-2xl font-bold text-yellow-500">0</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow text-center">
+        <p class="text-gray-500">Grade C</p>
+        <p id="totalC" class="text-2xl font-bold text-red-500">0</p>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="bg-white p-6 rounded-lg shadow-md flex flex-wrap gap-4 mx-6 mb-4">
+      <button onclick="openModal('add')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Add Student</button>
+      <button onclick="openModal('delete')" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete Student</button>
+    </div>
+
+    <!-- Student Table -->
+    <div class="bg-white rounded-lg shadow-md mx-6 overflow-x-auto mb-6">
+      <div class="p-4 border-b font-bold text-purple-700">Student List</div>
+      <table class="w-full text-left" id="studentTable">
+        <thead class="bg-purple-50">
+          <tr>
+            <th class="p-4">ID</th>
+            <th class="p-4">Name</th>
+            <th class="p-4">Grade</th>
+            <th class="p-4">Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dynamic rows go here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white p-4 text-center text-sm text-gray-400 border-t mt-auto">
+      © 2025 StudentPanel. All rights reserved.
+    </footer>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modalOverlay" class="fixed sm:inset-52 sm:ml-[26%] inset-8 w-90  hidden justify-center items-center ">
+  <div class="bg-white rounded-lg w-11/12 max-w-md p-6 shadow-lg">
+    <h2 id="modalTitle" class="text-lg font-bold mb-4">Add Student</h2>
+    <form id="modalForm" class="space-y-4">
+      <input type="text" id="modalId" placeholder="Student ID" required class="w-full px-4 py-2 border rounded" />
+      <input type="text" id="modalName" placeholder="Student Name" required class="w-full px-4 py-2 border rounded" />
+      <div id="addFields" class="space-y-4">
+        <input type="text" id="modalGrade" placeholder="Grade (e.g. A, B, C)" class="w-full px-4 py-2 border rounded" />
+        <input type="text" id="modalLevel" placeholder="Level (e.g. Beginner, Intermediate)" class="w-full px-4 py-2 border rounded" />
+      </div>
+      <div class="flex justify-end gap-4">
+        <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Submit</button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
