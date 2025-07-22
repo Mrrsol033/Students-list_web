@@ -1,13 +1,13 @@
-// Sample student list
-let students = [
-  { id: "3252", name: "Sol", grade: "C", level: "9" },
-  { id: "1234", name: "Lina", grade: "B", level: "8" },
-  { id: "4567", name: "Mick", grade: "A", level: "10" },
-];
 
+let students = [
+  { id: "0001", name: "Sim Sol", grade: "C", level: "9" },
+  { id: "0002", name: "Mona Lina", grade: "B", level: "8" },
+  { id: "0003", name: "Duo Mick", grade: "A", level: "10" },
+]
 // Render students into the table
 function renderStudentTable() {
-  const tbody = document.querySelector("#studentTable tbody");
+  
+  let tbody = document.querySelector("#studentTable tbody")
   tbody.innerHTML = students.map(student => `
     <tr>
       <td class="p-4">${student.id}</td>
@@ -16,14 +16,14 @@ function renderStudentTable() {
       <td class="p-4">${student.level}</td>
     </tr>
   `).join("");
-
-  renderSummary(); // 👈 Add this
+    
+  renderSummary(); 
 }
 function renderSummary() {
-  const total = students.length;
-  const gradeA = students.filter(s => s.grade.toUpperCase() === "A").length;
-  const gradeB = students.filter(s => s.grade.toUpperCase() === "B").length;
-  const gradeC = students.filter(s => s.grade.toUpperCase() === "C").length;
+  let total = students.length;
+  let gradeA = students.filter(s => s.grade.toUpperCase() === "A").length;
+  let gradeB = students.filter(s => s.grade.toUpperCase() === "B").length;
+  let gradeC = students.filter(s => s.grade.toUpperCase() === "C").length;
 
   document.getElementById("totalStudents").textContent = total;
   document.getElementById("totalA").textContent = gradeA;
@@ -40,14 +40,13 @@ function openModal(mode) {
 
   document.getElementById("modalForm").onsubmit = function (e) {
     e.preventDefault();
-    const id = document.getElementById("modalId").value.trim();
-    const name = document.getElementById("modalName").value.trim();
-    const grade = document.getElementById("modalGrade").value.trim();
-    const level = document.getElementById("modalLevel").value.trim();
+    let id = document.getElementById("modalId").value.trim();
+    let name = document.getElementById("modalName").value.trim();
+    let grade = document.getElementById("modalGrade").value.trim();
+    let level = document.getElementById("modalLevel").value.trim();
 
     if (mode === "add") {
-      // Check if student with this ID already exists
-      const exists = students.some(student => student.id === id);
+      let exists = students.some(student => student.id === id);
       if (exists) {
         alert("Student with this ID already exists.");
       } else {
@@ -55,7 +54,7 @@ function openModal(mode) {
         renderStudentTable();
       }
     } else if (mode === "delete") {
-      const index = students.findIndex(student => student.id === id);
+      let index = students.findIndex(student => student.id === id);
       if (index > -1) {
         students.splice(index, 1);
         renderStudentTable();
@@ -72,7 +71,4 @@ function closeModal() {
   document.getElementById("modalOverlay").classList.add("hidden");
   document.getElementById("modalForm").reset();
 }
-
-
-// Initial render
 renderStudentTable();

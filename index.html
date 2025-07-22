@@ -54,6 +54,9 @@
       <button onclick="openModal('add')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Add Student</button>
       <button onclick="openModal('delete')" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete Student</button>
     </div>
+  
+
+
 
     <!-- Student Table -->
     <div class="bg-white rounded-lg shadow-md mx-6 overflow-x-auto mb-6">
@@ -88,13 +91,20 @@
       <input type="text" id="modalId" placeholder="Student ID" required class="w-full px-4 py-2 border rounded" />
       <input type="text" id="modalName" placeholder="Student Name" required class="w-full px-4 py-2 border rounded" />
       <div id="addFields" class="space-y-4">
-        <input type="text" id="modalGrade" placeholder="Grade (e.g. A, B, C)" class="w-full px-4 py-2 border rounded" />
+        <input type="text" id="modalGrade" list="grade" name="grade" placeholder="Grade (e.g. A, B, C)" class="w-full px-4 py-2 border rounded" />
+        <datalist id="grade">
+          <option value="A"></option>
+          <option value="B"></option>
+          <option value="C"></option>
+        </datalist>
         <input type="text" id="modalLevel" placeholder="Level (e.g. Beginner, Intermediate)" class="w-full px-4 py-2 border rounded" />
       </div>
       <div class="flex justify-end gap-4">
         <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</button>
         <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Submit</button>
+        
       </div>
+
       
     </form>
   </div>
