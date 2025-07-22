@@ -31,6 +31,28 @@ function renderSummary() {
   document.getElementById("totalC").textContent = gradeC;
 }
 
+function filterByInputGrade() {
+  const input = document.getElementById("gradeSearchInput").value.trim().toUpperCase();
+
+  const tbody = document.querySelector("#studentTable tbody");
+  tbody.innerHTML = "";
+
+  const filtered = input === ""
+    ? students
+    : students.filter(s => s.grade === input);
+
+  for (const student of filtered) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="p-4">${student.id}</td>
+      <td class="p-4">${student.name}</td>
+      <td class="p-4">${student.grade}</td>
+      <td class="p-4">${student.level}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
 
 // Modal handler
 function openModal(mode) {
@@ -71,4 +93,5 @@ function closeModal() {
   document.getElementById("modalOverlay").classList.add("hidden");
   document.getElementById("modalForm").reset();
 }
+
 renderStudentTable();

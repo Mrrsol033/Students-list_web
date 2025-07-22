@@ -53,6 +53,24 @@
     <div class="bg-white p-6 rounded-lg shadow-md flex flex-wrap gap-4 mx-6 mb-4">
       <button onclick="openModal('add')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Add Student</button>
       <button onclick="openModal('delete')" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete Student</button>
+      <!-- Grade Filter Buttons -->
+  
+  <input
+    type="text"
+    id="gradeSearchInput"
+    list="gradeList"
+    placeholder="Enter grade to filter "
+    class="w-full sm:w-64 px-4 py-2 ml-130 border-gray-400 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+    oninput="filterByInputGrade()"
+  />
+  <datalist id="gradeList">
+    <option value="A"></option>
+    <option value="B"></option>
+    <option value="C"></option>
+  </datalist>
+  <button type="button" class="font-bold text-2xl bg-blue-600 text-white w-24 border rounded-[5px] px-4 py-2">Filter</button>
+
+
     </div>
   
 
